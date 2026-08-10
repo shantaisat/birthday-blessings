@@ -10,7 +10,13 @@ const ctx = canvas.getContext("2d");
 const background = new Image();
 background.src = "blessing-background.PNG";
 
+
+/* =========================
+   BLESSINGS
+========================= */
+
 const blessings = [
+
     [
         "May the Lord bless you and keep you.",
         "May His face shine upon you",
@@ -103,37 +109,63 @@ const blessings = [
         "",
         "Have a truly blessed day."
     ]
+
 ];
+
 
 let lastBlessingIndex = -1;
 
+
+/* =========================
+   CHOOSE RANDOM BLESSING
+========================= */
+
 function chooseBlessing() {
+
     let index;
 
     do {
-        index = Math.floor(Math.random() * blessings.length);
-    } while (index === lastBlessingIndex && blessings.length > 1);
+
+        index = Math.floor(
+            Math.random() * blessings.length
+        );
+
+    } while (
+        index === lastBlessingIndex &&
+        blessings.length > 1
+    );
 
     lastBlessingIndex = index;
 
     return blessings[index];
 }
 
+
+/* =========================
+   DRAW TEXT
+   MAXIMUM 3 WORDS PER LINE
+========================= */
+
 function drawTextLines(lines, startY, lineHeight) {
+
     let y = startY;
 
     lines.forEach(line => {
 
-        // Keep intentional spaces between paragraphs
         if (line === "") {
-            y += lineHeight * 0.55;
+
+            y += lineHeight * 0.5;
             return;
+
         }
 
-        const words = line.split(" ");
+        const words = line.trim().split(/\s+/);
 
-        // Maximum 3 words per line
-        for (let i = 0; i < words.length; i += 3) {
+        for (
+            let i = 0;
+            i < words.length;
+            i += 3
+        ) {
 
             const shortLine = words
                 .slice(i, i + 3)
@@ -147,11 +179,27 @@ function drawTextLines(lines, startY, lineHeight) {
 
             y += lineHeight;
         }
+
     });
+
 }
 
+
+/* =========================
+   DRAW COMPLETE CARD
+========================= */
+
 function drawBlessing(name, blessing) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+
+    // Background artwork
 
     ctx.drawImage(
         background,
@@ -161,123 +209,215 @@ function drawBlessing(name, blessing) {
         canvas.height
     );
 
+
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
 
-    // Name
+
+    /* NAME */
+
     ctx.fillStyle = "#087b3e";
-    ctx.font = "bold 82px Georgia";
+
+    ctx.font =
+        "bold 82px Georgia";
+
     ctx.fillText(
         `${name},`,
         canvas.width / 2,
         340
     );
 
-    // Decorative line
+
+    /* GOLD LINE */
+
     ctx.strokeStyle = "#f4b400";
     ctx.lineWidth = 6;
 
     ctx.beginPath();
-    ctx.moveTo(350, 410);
-    ctx.lineTo(730, 410);
+
+    ctx.moveTo(
+        350,
+        410
+    );
+
+    ctx.lineTo(
+        730,
+        410
+    );
+
     ctx.stroke();
 
-    // Blessing text
+
+    /* BLESSING */
+
     ctx.fillStyle = "#17231b";
-    
-    ctx.font = "44px Georgia";
 
-ctx.font = "42px Georgia";
+    ctx.font =
+        "42px Georgia";
 
-drawTextLines(
-    blessing,
-    465,
-    54
-);
+    drawTextLines(
+        blessing,
+        465,
+        54
+    );
 
-    // Signature
+
+    /* SIGNATURE */
+
     ctx.fillStyle = "#087b3e";
-    ctx.font = "italic 42px Georgia";
 
-  ctx.fillText(
-    "With love,",
-    canvas.width / 2,
-    1220
-);
+    ctx.font =
+        "italic 42px Georgia";
 
-ctx.font = "italic bold 62px Georgia";
+    ctx.fillText(
+        "With love,",
+        canvas.width / 2,
+        1220
+    );
 
-ctx.fillText(
-    "Shanta",
-    canvas.width / 2,
-    1285
-);
+
+    ctx.font =
+        "italic bold 62px Georgia";
+
+    ctx.fillText(
+        "Shanta",
+        canvas.width / 2,
+        1285
+    );
+
+}
+
+
+/* =========================
+   GENERATE BLESSING
+========================= */
 
 function generateBlessing() {
-    const name = nameInput.value.trim();
+
+    const name =
+        nameInput.value.trim();
+
 
     if (!name) {
-        alert("Please enter your name first.");
+
+        alert(
+            "Please enter your name first."
+        );
+
         nameInput.focus();
+
         return;
     }
 
-    const blessing = chooseBlessing();
 
-    if (background.complete) {
-        drawBlessing(name, blessing);
+    const blessing =
+        chooseBlessing();
+
+
+    if (
+        background.complete &&
+        background.naturalWidth > 0
+    ) {
+
+        drawBlessing(
+            name,
+            blessing
+        );
+
     } else {
-        background.onload = () => {
-            drawBlessing(name, blessing);
+
+        background.onload = function () {
+
+            drawBlessing(
+                name,
+                blessing
+            );
+
         };
+
     }
 
-    blessingSection.classList.remove("hidden");
 
-    setTimeout(() => {
+    blessingSection
+        .classList
+        .remove("hidden");
+
+
+    setTimeout(function () {
+
         blessingSection.scrollIntoView({
             behavior: "smooth",
             block: "start"
         });
+
     }, 100);
+
 }
 
+
+/* =========================
+   SAVE IMAGE
+========================= */
+
 function downloadBlessing() {
+
     const name =
-        nameInput.value.trim() || "Blessing";
+        nameInput.value.trim() ||
+        "Blessing";
+
 
     const link =
         document.createElement("a");
 
+
     link.download =
         `${name}-blessing-from-Shanta.png`;
 
+
     link.href =
-        canvas.toDataURL("image/png");
+        canvas.toDataURL(
+            "image/png"
+        );
+
 
     link.click();
+
 }
+
+
+/* =========================
+   BUTTONS
+========================= */
 
 blessingButton.addEventListener(
     "click",
     generateBlessing
 );
 
+
 anotherButton.addEventListener(
     "click",
     generateBlessing
 );
+
 
 downloadButton.addEventListener(
     "click",
     downloadBlessing
 );
 
+
+/* Pressing ENTER also works */
+
 nameInput.addEventListener(
     "keydown",
-    function(event) {
+    function (event) {
+
         if (event.key === "Enter") {
+
             generateBlessing();
+
         }
+
     }
 );
