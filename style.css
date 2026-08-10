@@ -1,1 +1,342 @@
- 
+ /* ========================================
+   SHANTA'S BIRTHDAY BLESSINGS
+   Tropical Jamaica Theme
+======================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background:
+        linear-gradient(
+            rgba(0, 120, 115, 0.88),
+            rgba(0, 80, 55, 0.94)
+        ),
+        url("blessing-background.PNG");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    color: #ffffff;
+}
+
+
+/* MAIN PAGE */
+
+.page {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 55px 20px 70px;
+}
+
+
+/* WELCOME AREA */
+
+.welcome {
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    color: #17231b;
+
+    padding: 45px 28px;
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.22);
+
+    border-top: 8px solid #f9c900;
+}
+
+
+.small-heading {
+    color: #087b3e;
+
+    font-size: 0.78rem;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 15px;
+}
+
+
+h1 {
+    font-size: clamp(2rem, 7vw, 3.5rem);
+
+    line-height: 1.05;
+
+    margin-bottom: 20px;
+
+    color: #087b3e;
+}
+
+
+.intro {
+    max-width: 520px;
+
+    margin: 0 auto 35px;
+
+    font-size: 1.08rem;
+
+    line-height: 1.65;
+
+    color: #4a514c;
+}
+
+
+/* NAME FORM */
+
+.name-form {
+    max-width: 430px;
+    margin: auto;
+}
+
+
+label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-weight: 700;
+
+    font-size: 1rem;
+
+    color: #17231b;
+}
+
+
+input {
+    width: 100%;
+
+    padding: 16px 18px;
+
+    font-size: 1.1rem;
+
+    border-radius: 14px;
+
+    border: 2px solid #d9dedb;
+
+    background: #ffffff;
+
+    color: #111;
+
+    text-align: center;
+
+    outline: none;
+
+    margin-bottom: 15px;
+
+    transition: 0.2s ease;
+}
+
+
+input:focus {
+    border-color: #087b3e;
+
+    box-shadow:
+        0 0 0 4px rgba(8, 123, 62, 0.12);
+}
+
+
+input::placeholder {
+    color: #999;
+}
+
+
+/* BUTTONS */
+
+button {
+    border: none;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    font-weight: 800;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+
+button:active {
+    transform: scale(0.98);
+}
+
+
+#blessingButton {
+    width: 100%;
+
+    padding: 17px 20px;
+
+    border-radius: 14px;
+
+    background: #f9c900;
+
+    color: #101810;
+
+    font-size: 1.05rem;
+
+    box-shadow:
+        0 7px 18px rgba(0, 0, 0, 0.15);
+}
+
+
+#blessingButton:hover {
+    transform: translateY(-2px);
+}
+
+
+/* BLESSING AREA */
+
+.blessing-section {
+    margin-top: 45px;
+
+    text-align: center;
+}
+
+
+.hidden {
+    display: none;
+}
+
+
+/* GENERATED CARD */
+
+.card-wrapper {
+    width: 100%;
+
+    margin: 0 auto 25px;
+
+    overflow: hidden;
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 20px 55px rgba(0, 0, 0, 0.3);
+
+    background: #ffffff;
+}
+
+
+#blessingCanvas {
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+}
+
+
+/* DOWNLOAD BUTTON */
+
+.download-button {
+    width: 100%;
+
+    max-width: 430px;
+
+    padding: 17px 20px;
+
+    border-radius: 14px;
+
+    background: #f9c900;
+
+    color: #111;
+
+    font-size: 1.05rem;
+
+    margin-bottom: 12px;
+
+    box-shadow:
+        0 7px 18px rgba(0, 0, 0, 0.18);
+}
+
+
+.download-button:hover {
+    transform: translateY(-2px);
+}
+
+
+/* ANOTHER BLESSING */
+
+.another-button {
+    display: block;
+
+    width: 100%;
+
+    max-width: 430px;
+
+    margin: 0 auto;
+
+    padding: 15px 20px;
+
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    color: #087b3e;
+
+    font-size: 0.95rem;
+}
+
+
+/* SMALL SCREEN / PHONE */
+
+@media (max-width: 600px) {
+
+    .page {
+        padding:
+            30px 15px
+            50px;
+    }
+
+    .welcome {
+        padding:
+            35px 20px;
+
+        border-radius: 22px;
+    }
+
+    h1 {
+        font-size: 2.25rem;
+    }
+
+    .intro {
+        font-size: 1rem;
+    }
+
+    .card-wrapper {
+        border-radius: 16px;
+    }
+
+}
+
+
+/* EXTRA SMALL PHONES */
+
+@media (max-width: 380px) {
+
+    h1 {
+        font-size: 1.9rem;
+    }
+
+    .welcome {
+        padding:
+            30px 16px;
+    }
+
+}
