@@ -187,30 +187,31 @@ function drawBlessing(name, blessing) {
     
     ctx.font = "44px Georgia";
 
+ctx.font = "42px Georgia";
+
 drawTextLines(
     blessing,
-    500,
-    60
+    465,
+    54
 );
 
     // Signature
     ctx.fillStyle = "#087b3e";
     ctx.font = "italic 42px Georgia";
 
-    ctx.fillText(
-        "With love,",
-        canvas.width / 2,
-        1190
-    );
+  ctx.fillText(
+    "With love,",
+    canvas.width / 2,
+    1220
+);
 
-    ctx.font = "italic bold 62px Georgia";
+ctx.font = "italic bold 62px Georgia";
 
-    ctx.fillText(
-        "Shanta",
-        canvas.width / 2,
-        1260
-    );
-}
+ctx.fillText(
+    "Shanta",
+    canvas.width / 2,
+    1285
+);
 
 function generateBlessing() {
     const name = nameInput.value.trim();
