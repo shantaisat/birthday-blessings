@@ -1,1 +1,87 @@
- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Blessing for You | Shanta</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="page">
+
+        <section class="welcome">
+
+            <p class="small-heading">A LITTLE SOMETHING FOR YOU</p>
+
+            <h1>Thank you for celebrating with me!</h1>
+
+            <p class="intro">
+                Your birthday wishes were a blessing to me,
+                so I'd love to leave a blessing with you.
+            </p>
+
+            <div class="name-form">
+
+                <label for="name">
+                    What's your name?
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your name"
+                    autocomplete="name"
+                    maxlength="30"
+                >
+
+                <button id="blessingButton">
+                    Receive My Blessing
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <section
+            id="blessingSection"
+            class="blessing-section hidden"
+        >
+
+            <div class="card-wrapper">
+
+                <canvas
+                    id="blessingCanvas"
+                    width="1080"
+                    height="1440"
+                ></canvas>
+
+            </div>
+
+            <button
+                id="downloadButton"
+                class="download-button"
+            >
+                Save My Blessing
+            </button>
+
+            <button
+                id="anotherButton"
+                class="another-button"
+            >
+                Receive Another Blessing
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html> 
