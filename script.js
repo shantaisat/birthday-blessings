@@ -123,10 +123,28 @@ function drawTextLines(lines, startY, lineHeight) {
     let y = startY;
 
     lines.forEach(line => {
+
+        // Keep intentional spaces between paragraphs
         if (line === "") {
-            y += lineHeight * 0.65;
-        } else {
-            ctx.fillText(line, canvas.width / 2, y);
+            y += lineHeight * 0.55;
+            return;
+        }
+
+        const words = line.split(" ");
+
+        // Maximum 3 words per line
+        for (let i = 0; i < words.length; i += 3) {
+
+            const shortLine = words
+                .slice(i, i + 3)
+                .join(" ");
+
+            ctx.fillText(
+                shortLine,
+                canvas.width / 2,
+                y
+            );
+
             y += lineHeight;
         }
     });
@@ -166,13 +184,14 @@ function drawBlessing(name, blessing) {
 
     // Blessing text
     ctx.fillStyle = "#17231b";
-    ctx.font = "48px Georgia";
+    
+    ctx.font = "44px Georgia";
 
-    drawTextLines(
-        blessing,
-        500,
-        72
-    );
+drawTextLines(
+    blessing,
+    500,
+    60
+);
 
     // Signature
     ctx.fillStyle = "#087b3e";
